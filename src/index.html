@@ -216,10 +216,11 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
         Each split part of information is a trash, moreover i parts: i < K is a trash too, only  i >= K can retrieve the real secret.
         Split parts and initial secret have the same length.
         Secret can be any length more than 8 bytes.
+        If you lose i parts so that i < K you must destroy other N-i parts and resplit secret by this tool. Doing so no information of your secret is leaked.
     </p>
 
     <div style="font-size: 110%"><b>Strongly recommended to use this tool <span style="color: red">offline</span> with real funds.</b></div>
-    <div>You can <a href="" download="chipndale.html">download this page</a> and use it with <a href="https://www.torproject.org/" target="_blank">Tor browser</a> in stateless flash-card security-based operation systems <span style="text-decoration: underline;">without internet connection</span> and that <span style="text-decoration: underline;">wipes memory after usage</span>(example <a href="https://tails.boum.org/" target="_blank">Tails</a>). Otherwise, you risk to lose all your funds.</div>
+    <div>You can <a class="btn btn-outline-dark" href="" download="chipndale.html">download</a> this page and use it with <a href="https://www.torproject.org/" target="_blank">Tor browser</a> in stateless flash-card security-based operation systems <span style="text-decoration: underline;">without internet connection</span> and that <span style="text-decoration: underline;">wipes memory after usage</span>(example <a href="https://tails.boum.org/" target="_blank">Tails</a>). Otherwise, you risk to lose all your funds.</div>
 
     <p></p>
     <div style="margin-top: 10px; margin-bottom: 10px">
@@ -298,16 +299,24 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
     </div>
 
     <hr class="solid">
-    <p>This project is 100% open-source code. Get the source code from the repository . </p>
-    <div><i>Random generator</i></div>
+    <p>This project is open-source code. Get the source code from the repository <a href="https://github.com/ilyadt/chipndale" target="_blank">https://github.com/ilyadt/chipndale</a>.</p>
+    <h6>Random generator</h6>
     <div>The random generator on this page uses a cryptographically secure random number generator. The built in random generator can generally be trusted more than your own intuition about randomness. If cryptographic randomness isn't available in your browser, this page will show a warning and the split button will not work.</div>
     <p></p>
+    <hr class="solid">
     <div class="row">
-        <div class="col-md" style="margin-top: 10px">
-            <div>Contact the author user@email.com</div>
+        <div class="col">
+            <div><i>Contact author</i></div>
         </div>
-        <div class="col-md" style="margin-top: 10px">
-            <span style="vertical-align: top">Donate the author </span>
+        <div class="col">
+            <span style="text-decoration: underline">ilya_dt@pm.me</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span><i>Donate author</i></span>
+        </div>
+        <div class="col">
         <svg xmlns="http://www.w3.org/2000/svg" width="80pt" height="80pt" viewBox="0 0 1024.000000 1024.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,1024.000000) scale(0.100000,-0.100000)"
                fill="#000000" stroke="none">
@@ -1086,9 +1095,10 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
                 <path d="M9880 230 l0 -131 128 3 127 3 3 128 3 127 -131 0 -130 0 0 -130z"/>
             </g>
         </svg>
-
+            <a style="display: block;" href="..." target="_blank">Donate&nbsp;link</a>
         </div>
     </div>
+    <hr class="solid">
 </div>
 <script src="dist/jquery.slim.min.js"></script>
 <script src="dist/bootstrap.bundle.min.js"></script>
