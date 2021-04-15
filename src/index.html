@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="dist/bootstrap.min.css">
     <style>
         .form-border {
-            /*border: 1px solid #ccc;*/
-            /*border-radius: 9px;*/
             margin: 5px;
             padding: 5px 10px;
         }
@@ -226,12 +224,14 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
     <div style="margin-top: 10px; margin-bottom: 10px">
         <div>
             <div class="form-check form-check-inline">
-                <input checked class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">Mnemonic (<a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" target="_blank">bip39</a>)</label>
+                <input checked class="form-check-input" type="radio" name="secret-type" id="secret-type-mnemonic" value="mnemonic">
+                <label class="form-check-label" for="secret-type-mnemonic">
+                    Mnemonic (<a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki" target="_blank">bip39</a>)
+                </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">Hex</label>
+                <input class="form-check-input" type="radio" name="secret-type" id="secret-type-hex" value="hex">
+                <label class="form-check-label" for="secret-type-hex">Hex</label>
             </div>
         </div>
         <hr class="solid">
@@ -241,7 +241,7 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
                 <h2>Split</h2>
                 <div id="generator-block" class="bs-callout bs-callout-default">
                     <h5>Random Generator</h5>
-                    <label for="generator-words" class="form-label">15 words</label>
+                    <label for="generator-words" class="form-label"><span>15</span> <span>words</span></label>
                     <input type="range" class="form-range" min="12" max="24" step="3" id="generator-words" value="15">
                     <button id="generate" type="button" class="btn btn-light btn-outline-dark">Generate</button>
                 </div>
@@ -252,8 +252,8 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
                     <input type="text" aria-label="Min required shares" class="form-control" value="2" id="min-shares">
                 </div>
                 <div id="split-mnemonic-block">
-                    <label for="mnemonic" class="form-label">Mnemonic</label>
-                    <textarea class="form-control" id="mnemonic" rows="3"></textarea>
+                    <label for="mnemonic" style="text-transform: capitalize;" class="form-label">Mnemonic</label>
+                    <textarea style="font-family: Consolas, Lucida Console, monospace;" class="form-control" id="mnemonic" rows="3"></textarea>
                     <div class="invalid-feedback">Invalid mnemonic</div>
                 </div>
                 <div id="split-btn-block">
@@ -268,11 +268,11 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
                 <div id="recover-shares">
                     <div>
                         <label for="recover-share-1" class="form-label">Share 1</label>
-                        <textarea class="form-control" rows="3" id="recover-share-1"></textarea>
+                        <textarea style="font-family: Consolas, Lucida Console, monospace;" class="form-control" rows="3" id="recover-share-1"></textarea>
                     </div>
                     <div>
                         <label for="recover-share-2" class="form-label">Share 2</label>
-                        <textarea class="form-control" rows="3" id="recover-share-2"></textarea>
+                        <textarea style="font-family: Consolas, Lucida Console, monospace;" class="form-control" rows="3" id="recover-share-2"></textarea>
                     </div>
                 </div>
                 <button id="recover-share-plus-btn" type="button" class="btn btn-primary" style="margin-top: 5px">
@@ -292,14 +292,14 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
 
                 <div id="recovered-mnemonic-block" style="display:none; padding-top: 10px">
                     <label for="recovered-mnemonic" class="form-label"><b>Recovered Mnemonic</b></label>
-                    <textarea id="recovered-mnemonic" class="form-control" rows="3" readonly></textarea>
+                    <textarea style="font-family: Consolas, Lucida Console, monospace;" id="recovered-mnemonic" class="form-control" rows="3" readonly></textarea>
                 </div>
             </div>
         </div>
     </div>
 
     <hr class="solid">
-    <p>This project is open-source code. Get the source code from the repository <a href="https://github.com/ilyadt/chipndale" target="_blank">https://github.com/ilyadt/chipndale</a>.</p>
+    <p>This project is open-source code. Get the source code from the repository <br> <a href="https://github.com/ilyadt/chipndale" target="_blank">https://github.com/ilyadt/chipndale</a></p>
     <h6>Random generator</h6>
     <div>The random generator on this page uses a cryptographically secure random number generator. The built in random generator can generally be trusted more than your own intuition about randomness. If cryptographic randomness isn't available in your browser, this page will show a warning and the split button will not work.</div>
     <p></p>
@@ -1103,10 +1103,29 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
 <script src="dist/jquery.slim.min.js"></script>
 <script src="dist/bootstrap.bundle.min.js"></script>
 <script src="dist/chipndale.js"></script>
+<script src="dist/form.js"></script>
 <script>
+    function getContextType() {
+        return $('input[name="secret-type"]:checked').val()
+    }
+
+    /**
+     * @return Context
+     */
+    function getContext() {
+        let type = getContextType()
+
+        let contexts = {
+            hex: new HexContext(),
+            mnemonic: new MnemonicContext(),
+        }
+
+       return contexts[type]
+    }
+
     $('#generate').click(() => {
         let words = parseInt($('#generator-words').val())
-        $('#mnemonic').val(chipndale.generateMnemonic(words))
+        $('#mnemonic').val(getContext().generate(words))
         $('#mnemonic').trigger("change");
     })
 
@@ -1121,13 +1140,13 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
         $('#split-btn-block .invalid-feedback').css('display', 'none') // clear
 
         try {
-            let shares = chipndale.SplitMnemonic($('#mnemonic').val(), total, threshold)
+            let shares = getContext().split($('#mnemonic').val(), total, threshold)
 
             shares.map((share,i) => {
                 splitShares.append(`
                 <div style="padding: 5px">
                     <label for="split-share${i+1}" class="form-label">Share ${i+1}</label>
-                    <textarea id="split-share${i+1}" class="form-control" rows="3" readonly>${share}</textarea>
+                    <textarea style="font-family: Consolas, Lucida Console, monospace;" id="split-share${i+1}" class="form-control" rows="3" readonly>${share}</textarea>
                 </div>
             `)
             })
@@ -1151,7 +1170,7 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
         $('#recover-shares').append(`
             <div>
                 <label for="recover-share-${elNum}" class="form-label">Share ${elNum}</label>
-                <textarea class="form-control" rows="3" id="recover-share-${elNum}"></textarea>
+                <textarea style="font-family: Consolas, Lucida Console, monospace;" class="form-control" rows="3" id="recover-share-${elNum}"></textarea>
             </div>
          `)
     })
@@ -1180,7 +1199,7 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
 
 
         try {
-            let mnemonic = chipndale.RecoverMnemonic(shares)
+            let mnemonic = getContext().recover(shares)
             $('#recovered-mnemonic').val(mnemonic)
             $('#recovered-mnemonic-block').css('display', 'block') // show recovered mnemonic
         } catch (e) {
@@ -1197,13 +1216,44 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
         el.removeClass('is-invalid') // clear mnemonic field highlight
         $('#split-mnemonic-block .invalid-feedback').css('display', 'none') // clear mnemonic error msg
 
-        if (!chipndale.isValidMnemonic(el.val())) {
+        if (!getContext().isValidSecret(el.val())) {
             el.addClass('is-invalid')
             $('#split-mnemonic-block .invalid-feedback').css('display', 'block')
         }
     })
     $('#generator-block input').bind('change input', e => {
-        $('#generator-block label').text($(e.currentTarget).val() + ' words')
+        $('#generator-block label span:first').text($(e.currentTarget).val())
+    })
+
+    $('input[name="secret-type"]').bind('change', e => {
+
+        // Split clear
+        $('#mnemonic').val('')
+        $('#mnemonic').removeClass('is-invalid')
+        $('#split-mnemonic-block .invalid-feedback').css('display', 'none') // clear mnemonic error msg
+        $('#split-btn-block .invalid-feedback').css('display', 'none') // clear split btn msg
+        $('#split-shares').text('') // clear shares
+
+        // Recover clear
+        $('#recover-btn-block .invalid-feedback').css('display', 'none') // clear message
+        $('#recovered-mnemonic-block').css('display', 'none') // hide recovered block
+        $('#recover-shares').html(`
+            <div>
+                  <label for="recover-share-1" class="form-label">Share 1</label>
+                        <textarea style="font-family: Consolas, Lucida Console, monospace;" class="form-control" rows="3" id="recover-share-1"></textarea>
+           </div>
+           <div>
+              <label for="recover-share-2" class="form-label">Share 2</label>
+              <textarea style="font-family: Consolas, Lucida Console, monospace;" class="form-control" rows="3" id="recover-share-2"></textarea>
+           </div>
+        `)
+
+        // Mnemonic / hex word
+        $('#recovered-mnemonic-block label').text('Recovered ' + getContextType())
+        $('#split-mnemonic-block label').text(getContextType())
+        $('#split-mnemonic-block .invalid-feedback').text('Invalid ' + getContextType())
+
+        getContext().reset()
     })
 </script>
 </body>

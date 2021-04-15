@@ -24,7 +24,7 @@ module.exports.generateMnemonic = (wordsCount) => {
 }
 
 module.exports.generateSecret = (bytes) => {
-    return crypto.randomBytes(bytes)
+    return crypto.randomBytes(bytes).toString('hex')
 }
 
 module.exports.isValidMnemonic = (mnemonic) => {
