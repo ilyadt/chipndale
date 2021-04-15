@@ -23,4 +23,7 @@ module.exports = {
             Buffer: ['buffer', 'Buffer'],
         })
     ],
+    performance: {
+        hints: false
+    }
 };
