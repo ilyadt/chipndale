@@ -209,16 +209,19 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
     </h1>
     <hr class="solid">
     <p>
-        Split your sensitive information into parts.
-        Split parts look like original secret so that nobody can can prove that is not the original secret.
-        Each split part of information is a trash, moreover i parts: i < K is a trash too, only  i >= K can retrieve the real secret.
-        Split parts and initial secret have the same length.
-        Secret can be any length more than 8 bytes.
-        If you lose i parts so that i < K you must destroy other N-i parts and resplit secret by this tool. Doing so no information of your secret is leaked.
+        This tool is for splitting your sensitive information into <var>N</var> parts so that you need only <var>K</var> of <var>N</var> parts to recover the information.
     </p>
+    <p>
+        Each split part looks like original secret(they have the same length and both are unstructured) so nobody can prove that is not the original secret.
+        Secret can be any length more than 8 bytes.
+    </p>
+    <p>
+        Each split part of information is a trash, moreover, <var>i</var> parts: <var>i < K</var> is a trash too, only  <var>i >= K</var> can retrieve the real secret.
+    </p>
+    <p>If you lose <var>i</var> parts so that <var>i < K</var> you must destroy other <var>N-i</var> parts after resplitting secret by this tool. Doing so no information of your secret is leaked.</p>
 
-    <div style="font-size: 110%"><b>Strongly recommended to use this tool <span style="color: red">offline</span> with real funds.</b></div>
-    <div>You can <a class="btn btn-outline-dark" href="" download="chipndale.html">download</a> this page and use it with <a href="https://www.torproject.org/" target="_blank">Tor browser</a> in stateless flash-card security-based operation systems <span style="text-decoration: underline;">without internet connection</span> and that <span style="text-decoration: underline;">wipes memory after usage</span>(example <a href="https://tails.boum.org/" target="_blank">Tails</a>). Otherwise, you risk to lose all your funds.</div>
+    <div style="font-size: 110%"><b>Strongly recommended to use this tool <span style="color: red">offline</span> with real secrets.</b></div>
+    <div>You can <a href="" download="chipndale.html">download</a> this page and use it with <a href="https://www.torproject.org/" target="_blank">Tor browser</a> in stateless flash-card security-based operation systems <span style="text-decoration: underline;">without internet connection</span> and that <span style="text-decoration: underline;">wipes memory after usage</span>(example <a href="https://tails.boum.org/" target="_blank">Tails</a>). Otherwise, you risk to lose your secret.</div>
 
     <p></p>
     <div style="margin-top: 10px; margin-bottom: 10px">
@@ -301,7 +304,7 @@ c-13 -13 -26 -3 -16 12 3 6 11 8 17 5 6 -4 6 -10 -1 -17z"/>
     <hr class="solid">
     <p>This project is open-source code. Get the source code from the repository <br> <a href="https://github.com/ilyadt/chipndale" target="_blank">https://github.com/ilyadt/chipndale</a></p>
     <h6>Random generator</h6>
-    <div>The random generator on this page uses a cryptographically secure random number generator. The built in random generator can generally be trusted more than your own intuition about randomness. If cryptographic randomness isn't available in your browser, this page will show a warning and the split button will not work.</div>
+    <div>The random generator on this page uses a cryptographically secure random number generator(<code>crypto.getRandomValues</code>). The built in random generator can generally be trusted more than your own intuition about randomness. If cryptographic randomness isn't available in your browser, generate/split buttons will not work.</div>
     <p></p>
     <hr class="solid">
     <div class="row">
