@@ -116,12 +116,9 @@ function sharesHaveDualism(shares, k) {
  * @return {object}
  */
 function csParams(l) {
-
-    let csKeySize = (l < 64) ? Math.floor(l / 2) : l - 32;
-
     return {
-        csKeySize: csKeySize,
-        csHashSize: l - csKeySize,
+        csKeySize: l - config.csHashSize,
+        csHashSize: 4,
     }
 }
 

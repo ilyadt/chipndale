@@ -11,3 +11,6 @@ module.exports.csCoordinate = 255
 
 // Entropy min length
 module.exports.minSecretLength = 8
+
+// Hash size in bytes
+module.exports.csHashSize = 4
