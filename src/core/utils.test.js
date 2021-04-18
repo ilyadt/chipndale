@@ -2,17 +2,6 @@
 const utils = require('./utils')
 
 test.each([
-    [8,   4, 4],
-    [32, 28, 4],
-    [64, 60, 4],
-])('csParams', (l, key, hash) => {
-    expect(utils.csParams(l)).toEqual({
-        csKeySize: key,
-        csHashSize: hash
-    })
-})
-
-test.each([
     [ // 256 bit
         'b1008f3a39a4466147f26f925bcabbecebc7549a8c2005ce1e176f7e224f2b74',
         '1f5e6947af4d06540936e9acdf13ed0cbb7ef233144c1d538af7b38ee2129c62'

@@ -35,9 +35,9 @@ function SplitSecret(secret, k, n) {
 
     let shares = Array.from({length: n}, () => Buffer.alloc(secret.length))
 
-    const {csKeySize, csHashSize} = utils.csParams(secret.length)
+    let csKeySize = secret.length - config.csHashSize
     let csKey = crypto.randomBytes(csKeySize)
-    let hmacSum = hmac(secret, csKey, csHashSize)
+    let hmacSum = hmac(secret, csKey, config.csHashSize)
 
     let cs = Buffer.alloc(secret.length)
     csKey.copy(cs, 0)

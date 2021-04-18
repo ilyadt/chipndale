@@ -5,6 +5,10 @@ const combin = require("./primitives/combinatorics")
 const interpolation = require("./primitives/interpolate")
 const config = require('./config')
 
+/**
+ * BigPoint is number of points with the same x coordinate
+ * [(x,y1),(x,y2), ... (x,yn)] so it can be represented as  x and Y vector
+ */
 class BigPoint {
     /**
      * @param {int} x
@@ -57,9 +61,9 @@ function interpolateBigPoints(x, sharePoints) {
  */
 function isSecretValid(secret, cs) {
 
-    const {csKeySize, csHashSize} = csParams(cs.length)
+    let csKeySize = cs.length - config.csHashSize
 
-    let calculatedHmac = hmac(secret, cs.slice(0, csKeySize), csHashSize)
+    let calculatedHmac = hmac(secret, cs.slice(0, csKeySize), config.csHashSize)
 
     let hmacSum = cs.slice(csKeySize, cs.length)
 
@@ -110,19 +114,6 @@ function sharesHaveDualism(shares, k) {
     return false
 }
 
-/**
- * @param {int} l - number of bytes of the secret
- *
- * @return {object}
- */
-function csParams(l) {
-    return {
-        csKeySize: l - config.csHashSize,
-        csHashSize: 4,
-    }
-}
-
-module.exports.csParams = csParams
 module.exports.isSecretValid = isSecretValid
 module.exports.interpolateBigPoints = interpolateBigPoints
 module.exports.sharesHaveDualism = sharesHaveDualism

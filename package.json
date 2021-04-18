@@ -1,10 +1,10 @@
 {
   "name": "chipndale",
   "version": "1.0.0",
-  "description": "Backup your secrets securely, decoy secret and plausibly deny the existence of their real secret, because there is no way for the coercer to prove that the decoy secret is not the real one",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "tests": "jest",
     "build": "webpack --config webpack.config.js"
   },
   "author": "",

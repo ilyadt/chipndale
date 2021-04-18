@@ -2,16 +2,20 @@
 
 A tool for splitting/recovering secrets of any length more than 8 bytes.
 
-Based on Shamir's Secret Sharing K-of-N with AES Galois Field.
+Shares have the same length as the secret and share structure is random.
+Decoy secret and plausibly deny the existence of real secret.
+There is no way for the coercer to prove that the decoy secret is not the real one.
+
+Based on Shamir's Secret Sharing K-of-N over Galois Field GF(256) with 0x11b polynomial.
 
 ## Specification
 
-The full description of splitting/recovering process can be found [here](./SPEC.md).
+The full process of splitting/recovering secret can be found [here](./SPEC.md).
 The specification is final and won't change, so you will be sure, you can recover you secrets anyway.
 
 ## Implementation
 
-The source code of library is written in javascript and can be found in /src/core, library has no dependencies.
+The source code of library is written in javascript and can be found in [./src/core](./src/core) with no external dependencies.
 
 ## Online tool
 
@@ -23,7 +27,10 @@ Library is covered with tests
 
 [Test vectors](./src/core/test_vectors.json)
 
-For running autotests command `npm run test`
+Run tests from the command-line: 
+```
+npm run tests
+```
 
 ## Donations
 

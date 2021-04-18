@@ -1,5 +1,5 @@
 Secret S has length L(L>=8) bytes length.
-You want to split it K(K>=2) of N(N>=2,K<=N,N<=maxShares) scheme. So only K of N shares can recover secret.
+You can split it K(K>=2) of N(N>=2,K<=N,N<=maxShares) scheme. So only K of N shares can recover secret.
 
 ## Spitting secret
 1. Generate random `csKey` of L-4 bytes length.
