@@ -20,6 +20,13 @@ test.each(testVectors)('SplitSecret', (testVector) => {
     })
 })
 
+test.each([
+    '11223344556677', // < min length
+    '1122334455667788112233445566778811223344556677889', // incorrect bytes representation
+])('SplitSecret invalid secret', (secret) => {
+    expect(() => chipndale.SplitSecret(secret, 2, 4)).toThrow()
+})
+
 test.each(testVectors)('RecoverSecret', (testVector) => {
 
     let combinations = combin.combinations(testVector.n, testVector.k)

@@ -10,7 +10,7 @@ const hmac = require('./primitives/hmac')
 /**
  * Divide `secret` with Shamir (k, n) threshold scheme
  *
- * @param {Buffer} secret byte array
+ * @param {Buffer|string} secret byte array
  * @param {int} k
  * @param {int} n
  * @return {Buffer[]}
@@ -18,7 +18,14 @@ const hmac = require('./primitives/hmac')
 function SplitSecret(secret, k, n) {
 
     // in case of hex string
-    secret = Buffer.from(secret, 'hex')
+    if (!Buffer.isBuffer(secret)) {
+        let decoded = Buffer.from(secret, 'hex').toString('hex')
+
+        if (decoded !== secret) {
+            throw new Error("incorrect bytes representation")
+        }
+        secret = Buffer.from(secret, 'hex')
+    }
 
     // irrelevant splitting secret which has too few bytes
     if (secret.length < config.minSecretLength) {
