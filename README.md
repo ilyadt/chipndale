@@ -21,6 +21,13 @@ The source code of library is written in javascript and can be found in [./src/c
 
 You can try this tool online on https://ilyadt.github.io/chipndale/
 
+To use tool offline, it is build with inline javascript and css by [inliner](https://www.npmjs.com/package/inliner)
+
+````
+inliner -m http://127.0.0.1:80/ > index.html
+````
+
+
 ## Tests
 
 Library is covered with tests
