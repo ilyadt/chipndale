@@ -15,13 +15,13 @@ The specification is final and won't change, so you will be sure, you can recove
 
 ## Implementation
 
-The source code of library is written in javascript and can be found in [./src/core](./src/core) with no external dependencies.
+The source code of library is written in javascript and can be found in [src/core](./src/core) with no external dependencies.
 
 ## Online tool
 
 You can try this tool online on https://ilyadt.github.io/chipndale/
 
-To use tool offline, it is build with inline javascript and css by [inliner](https://www.npmjs.com/package/inliner)
+To use tool offline, it is built with inline javascript and css by [inliner](https://www.npmjs.com/package/inliner)
 
 ````
 inliner -m http://127.0.0.1:80/ > index.html
