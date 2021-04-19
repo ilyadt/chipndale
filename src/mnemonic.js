@@ -57,4 +57,8 @@ function preCheckMnemonic(mnemonic) {
             throw new Error(`Invalid mnemonic, word '${word}' is unknown`)
         }
     })
+
+    if ([12,15,18,21,24].indexOf(mnemonic.split(' ').length) === -1){
+        throw new Error(`Invalid mnemonic, incorrect number of words`)
+    }
 }
